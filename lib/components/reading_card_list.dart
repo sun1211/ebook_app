@@ -1,25 +1,20 @@
 import 'package:ebook_app/consttants.dart';
+import 'package:ebook_app/models/book.dart';
 import 'package:flutter/material.dart';
 
 import 'book_rating.dart';
 import 'two_side_rounded_button.dart';
 
 class ReadingListCard extends StatelessWidget {
-  final String image;
-  final String title;
-  final String auth;
-  final double rating;
+  final Book book;
   final Function pressDetails;
   final Function pressRead;
 
   const ReadingListCard({
     Key key,
-    this.image,
-    this.title,
-    this.auth,
-    this.rating,
     this.pressDetails,
     this.pressRead,
+    this.book,
   }) : super(key: key);
 
   @override
@@ -29,7 +24,7 @@ class ReadingListCard extends StatelessWidget {
       height: 245,
       width: 202,
       child: Stack(
-        children: <Widget>[
+        children: [
           //background
           Positioned(
             bottom: 0,
@@ -52,7 +47,7 @@ class ReadingListCard extends StatelessWidget {
           ),
           //image demo
           Image.asset(
-            image,
+            book.image,
             width: 150,
           ),
           //favorite layout
@@ -60,14 +55,14 @@ class ReadingListCard extends StatelessWidget {
             top: 35,
             right: 10,
             child: Column(
-              children: <Widget>[
+              children: [
                 IconButton(
                   icon: Icon(
                     Icons.favorite_border,
                   ),
                   onPressed: () {},
                 ),
-                BookRating(score: rating),
+                BookRating(score: book.rating),
               ],
             ),
           ),
@@ -78,7 +73,7 @@ class ReadingListCard extends StatelessWidget {
               width: 202,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: [
                   //description
                   Padding(
                     padding: EdgeInsets.only(left: 24),
@@ -88,13 +83,13 @@ class ReadingListCard extends StatelessWidget {
                         style: TextStyle(color: kBlackColor),
                         children: [
                           TextSpan(
-                            text: "$title\n",
+                            text: "${book.title}\n",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           TextSpan(
-                            text: auth,
+                            text: book.auth,
                             style: TextStyle(
                               color: kLightBlackColor,
                             ),
@@ -106,7 +101,7 @@ class ReadingListCard extends StatelessWidget {
                   Spacer(),
                   //bottom layout of card
                   Row(
-                    children: <Widget>[
+                    children: [
                       GestureDetector(
                         onTap: pressDetails,
                         child: Container(

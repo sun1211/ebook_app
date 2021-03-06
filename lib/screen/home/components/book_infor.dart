@@ -11,7 +11,7 @@ class BookInfor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         Container(
           margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
           child: Text(
@@ -33,7 +33,7 @@ class BookInfor extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: 10, bottom: 10.0),
           child: Row(
-            children: <Widget>[
+            children: [
               Padding(
                 padding: EdgeInsets.only(right: 10.0),
                 child: BookRating(score: 4.9),

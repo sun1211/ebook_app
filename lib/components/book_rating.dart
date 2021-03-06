@@ -24,7 +24,7 @@ class BookRating extends StatelessWidget {
         ],
       ),
       child: Column(
-        children: <Widget>[
+        children: [
           Icon(
             Icons.star,
             color: kIconColor,

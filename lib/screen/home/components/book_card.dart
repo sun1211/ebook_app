@@ -16,7 +16,7 @@ class BookCard extends StatelessWidget {
       width: double.infinity,
       height: 245,
       child: Stack(
-        children: <Widget>[
+        children: [
           Positioned(
             bottom: 0,
             left: 0,

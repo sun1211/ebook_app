@@ -1,4 +1,6 @@
 import 'package:ebook_app/components/reading_card_list.dart';
+import 'package:ebook_app/models/book.dart';
+import 'package:ebook_app/screen/detail/detail_screen.dart';
 import 'package:ebook_app/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -48,32 +50,27 @@ class Body extends StatelessWidget {
                 SizedBox(height: 30),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget>[
-                      ReadingListCard(
-                        image: "assets/images/book-1.png",
-                        title: "Crushing & Influence",
-                        auth: "Gary Venchuk",
-                        rating: 4.9,
-                        pressDetails: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) {
-                          //       return DetailsScreen();
-                          //     },
-                          //   ),
-                          // );
-                        },
-                      ),
-                      ReadingListCard(
-                        image: "assets/images/book-2.png",
-                        title: "Top Ten Business Hacks",
-                        auth: "Herman Joel",
-                        rating: 4.8,
-                      ),
-                      SizedBox(width: 30),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 30),
+                    child: Row(
+                      children: List.generate(
+                          listBook.length,
+                          (index) => ReadingListCard(
+                                pressDetails: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return DetailScreen(
+                                          book: listBook[index],
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                                book: listBook[index],
+                              )),
+                    ),
                   ),
                 ),
                 Padding(
